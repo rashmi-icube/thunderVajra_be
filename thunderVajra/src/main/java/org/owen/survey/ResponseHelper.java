@@ -37,7 +37,7 @@ public class ResponseHelper {
 		boolean responseSaved = false;
 		DatabaseConnectionHelper dch = DatabaseConnectionHelper.getDBHelper();
 		try (CallableStatement cstmt = dch.masterDS.getConnection().prepareCall("{call saveResponse(?,?)}")) {
-			cstmt.setInt("queid", questionId);
+			cstmt.setInt("queId", questionId);
 			cstmt.setString("resp", responseText);
 			Logger.getLogger(ResponseHelper.class).debug("SQL statement for question : " + questionId + " : " + cstmt.toString());
 			try (ResultSet rs = cstmt.executeQuery()) {

@@ -68,7 +68,7 @@ public class DatabaseConnectionHelper {
 			String workingDir = "setwd(\"" + rScriptPath + "\")";
 			Logger.getLogger(DatabaseConnectionHelper.class).debug("Trying to load the RScript file at " + rScriptPath);
 			rCon.eval(workingDir);
-			String s = "source(\"test.r\")";
+			String s = "source(\"scriptLnT.r\")";
 			Logger.getLogger(DatabaseConnectionHelper.class).debug("R Path for eval " + s + ".... Loading now ...");
 
 			REXP loadRScript = rCon.eval(s);
