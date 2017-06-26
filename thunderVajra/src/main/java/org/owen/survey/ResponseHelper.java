@@ -22,14 +22,11 @@ public class ResponseHelper {
 
 			for (int i = 0; i < responseList.size(); i++) {
 				Response respObj = responseList.get(i);
-
 				Logger.getLogger(ResponseHelper.class).debug("Entering saveAllResponses (TEXT) for question ID" + respObj.getQuestionId());
 				boolean flag = saveTextResponse(respObj.getQuestionId(), respObj.getResponseString());
 				allResponsesSaved = (allResponsesSaved || flag);
-
 			}
 		}
-
 		return allResponsesSaved;
 	}
 

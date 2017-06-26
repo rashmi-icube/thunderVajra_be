@@ -78,7 +78,7 @@ public class DatabaseConnectionHelper {
 				releaseRcon();
 				throw new REXPMismatchException(loadRScript, "Error: " + loadRScript.asString());
 			} else {
-				Logger.getLogger(DatabaseConnectionHelper.class).debug("Successfully loaded test.r script");
+				Logger.getLogger(DatabaseConnectionHelper.class).debug("Successfully loaded scriptLnT.r script");
 			}
 			Logger.getLogger(DatabaseConnectionHelper.class).info("HashMap created!!!");
 
