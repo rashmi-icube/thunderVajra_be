@@ -70,6 +70,9 @@ public class HrDashboardHelper {
 			REXPString associations = (REXPString) r.get("association");
 			String[] associationsArray = associations.asStrings();
 
+			REXPString sentiments = (REXPString) r.get("sentiment");
+			String[] sentimentsArray = sentiments.asStrings();
+
 			Map<Integer, List<Map<String, Object>>> resultMap = new HashMap<>();
 
 			for (int i = 0; i < qIdArray.length; i++) {
@@ -78,6 +81,7 @@ public class HrDashboardHelper {
 				innerMap.put("word", wordArray[i]);
 				innerMap.put("frequency", freqArray[i]);
 				innerMap.put("association", associationsArray[i]);
+				innerMap.put("sentiment", sentimentsArray[i]);
 				if (resultMap.containsKey(qId)) {
 					resultMap.get(qId).add(innerMap);
 				} else {
@@ -108,11 +112,7 @@ public class HrDashboardHelper {
 
 	}
 
-	public static void main(String arg[]) {
-		getSentimentDistribution();
-	}
-
-	public static String getSentimentDistribution() {
+	public String getSentimentDistribution() {
 		Logger.getLogger(HrDashboardHelper.class).debug("Entering getSentimentDistribution");
 		DatabaseConnectionHelper dch = DatabaseConnectionHelper.getDBHelper();
 		RConnection rCon = dch.getRConn();
@@ -175,7 +175,7 @@ public class HrDashboardHelper {
 					String[] dataArray = new String[2];
 					dataArray[0] = "y : " + sourceMap.get(key);
 					dataArray[1] = "color : " + color;
-					
+
 					JSONObject dataObj = new JSONObject();
 					dataObj.put("y", sourceMap.get(key));
 					dataObj.put("color", color);
@@ -183,7 +183,7 @@ public class HrDashboardHelper {
 					dataArr.put(dataObj);
 					innerObj.put("data", dataArr);
 
-//					innerObj.put("data", dataArray);
+					// innerObj.put("data", dataArray);
 					totalCount += sourceMap.get(key);
 					if (key.equals("negative")) {
 						productTotalCount += (1 * sourceMap.get(key));
